@@ -1,7 +1,16 @@
 package cn.aurora.ssh.web.action;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.util.List;
+import java.util.zip.ZipInputStream;
+
+import org.activiti.engine.repository.Deployment;
+
 import cn.aurora.ssh.service.ILeaveBillService;
 import cn.aurora.ssh.service.IWorkflowService;
+import cn.aurora.ssh.utils.ValueContext;
 import cn.aurora.ssh.web.form.WorkflowBean;
 
 import com.opensymphony.xwork2.ActionSupport;
@@ -34,6 +43,8 @@ public class WorkflowAction extends ActionSupport implements ModelDriven<Workflo
 	 * @return
 	 */
 	public String deployHome(){
+		List<Deployment> deployments = workflowService.findDeploymentAll();
+		ValueContext.putValueContext("deployments", deployments);
 		return "deployHome";
 	}
 	
@@ -42,6 +53,20 @@ public class WorkflowAction extends ActionSupport implements ModelDriven<Workflo
 	 * @return
 	 */
 	public String newdeploy(){
+		
+		File file = workflowBean.getFile();
+		String fileName = workflowBean.getFilename();
+		ZipInputStream in;
+		try {
+			in = new ZipInputStream(new FileInputStream(file));
+			workflowService.saveDeployByZIP(in,fileName);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
 		return "list";
 	}
 	

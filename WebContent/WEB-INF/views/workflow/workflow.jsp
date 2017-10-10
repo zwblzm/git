@@ -34,14 +34,23 @@
 		        <td width="20%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">发布时间</span></div></td>
 		        <td width="10%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">操作</span></div></td>
 		      </tr>
-		        <tr>
-			        <td height="20" bgcolor="#FFFFFF" class="STYLE6"><div align="center">1529</div></td>
-			        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center">请假流程最新</div></td>
-			        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center">2014-02-08</div></td>
-			        <td height="20" bgcolor="#FFFFFF"><div align="center" class="STYLE21">
-			        	<a href="workflowAction_delDeployment.action?deploymentId=1">删除</a>
-			        </div></td>
-			    </tr> 
+		        
+			    <s:iterator value="deployments">
+			    	<tr>
+			        	<td height="20" bgcolor="#FFFFFF" class="STYLE6"><div align="center">${id}</div></td>
+			        	<td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center">${name}</div></td>
+			        	<td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center"><s:date name="deploymentTime" format="yyyy-MM-dd hh:mm:ss"/> </div></td>
+			        	<td height="20" bgcolor="#FFFFFF"><div align="center" class="STYLE21">
+			        		
+			        		<s:a action="workflowAction_delDeployment.action">
+			        		删除
+			        		<s:param name="deploymentId" value="id"></s:param>
+			        		</s:a>
+			       	 </div></td>
+			    	</tr> 
+			    </s:iterator>
+			    
+			    
 		      
 		    </table></td>
 		  </tr>
