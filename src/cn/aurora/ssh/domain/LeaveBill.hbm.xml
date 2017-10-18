@@ -15,4 +15,8 @@
 	<property name="state" type="integer" column="state"/>
 	<many-to-one name="user" class="Employee" column="user_id"></many-to-one>
 </class>
+<query name="getLeaveBillByEmployeeID">
+	<![CDATA[FROM LeaveBill where user.id=?]]>
+
+</query>
 </hibernate-mapping>

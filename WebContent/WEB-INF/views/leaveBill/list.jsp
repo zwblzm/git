@@ -95,6 +95,41 @@
 						<a href="${pageContext.request.contextPath }/workflowAction_viewHisComment.action?id=1" >查看审核记录</a>
 			        </div></td>
 			    </tr> 
+			    
+			    <s:iterator value="leaveBillList">
+			    	<tr>
+			        <td height="20" bgcolor="#FFFFFF" class="STYLE6"><div align="center">${id}</div></td>
+			        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center">${user.name}</div></td>
+			        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center">${days}</div></td>
+			        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center">${content}</div></td>
+			        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center">${remark}</div></td>
+			        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center"><s:date name="leaveDate" format="yyyy-MM-dd HH:mm:ss"/> </div></td>
+			        <td height="20" bgcolor="#FFFFFF" class="STYLE19">
+			        	
+		            	<s:if test="state==1">
+		            		<div align="center">
+			 					初始录入
+		            		</div>
+		            	</s:if>
+		            	<s:if test="state==2">
+		            		<div align="center">
+			 					审核中
+		            		</div>
+		            	</s:if>
+		            	<s:if test="state==3">
+		            		<div align="center">
+			 					审核通过
+		            		</div>
+		            	</s:if>
+		            </td>
+			        <td height="20" bgcolor="#FFFFFF"><div align="center" class="STYLE21">
+			        	<a href="${pageContext.request.contextPath }/leaveBillAction_input.action?id=1" >修改</a>
+						<a href="leaveBillAction_delete.action?id=1" >删除</a>
+						<a href="${pageContext.request.contextPath }/workflowAction_viewHisComment.action?id=1" >查看审核记录</a>
+			        </div></td>
+			    </tr> 
+			    
+			    </s:iterator>
 		      
 		    </table></td>
 		  </tr>

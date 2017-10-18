@@ -1,7 +1,12 @@
 package cn.aurora.ssh.web.action;
 
+import java.util.List;
+
+import cn.aurora.ssh.domain.Employee;
 import cn.aurora.ssh.domain.LeaveBill;
 import cn.aurora.ssh.service.ILeaveBillService;
+import cn.aurora.ssh.utils.SessionContext;
+import cn.aurora.ssh.utils.ValueContext;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
@@ -27,6 +32,11 @@ public class LeaveBillAction extends ActionSupport implements ModelDriven<LeaveB
 	 * @return
 	 */
 	public String home(){
+		Employee employee = SessionContext.get();
+		List<LeaveBill> leaveBillList = leaveBillService.findLeaveBillListByEmployee(employee.getId());
+		
+		ValueContext.putValueContext("leaveBillList", leaveBillList);
+		
 		return "home";
 	}
 	
@@ -43,6 +53,14 @@ public class LeaveBillAction extends ActionSupport implements ModelDriven<LeaveB
 	 * 
 	 * */
 	public String save() {
+		
+		Long id = leaveBill.getId();
+		if(id!=null) {
+			
+		}
+		leaveBillService.saveLeaveBill(leaveBill);
+		
+		
 		return "save";
 	}
 	
