@@ -19,4 +19,9 @@
 	<![CDATA[FROM LeaveBill where user.id=?]]>
 
 </query>
+
+<query name="getLeaveBillById">
+	<![CDATA[FROM LeaveBill WHERE id=?]]>
+
+</query>
 </hibernate-mapping>

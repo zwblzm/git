@@ -43,58 +43,7 @@
 		        <td width="5%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">请假状态</span></div></td>
 		        <td width="25%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">操作</span></div></td>
 		      </tr>
-		        <tr>
-			        <td height="20" bgcolor="#FFFFFF" class="STYLE6"><div align="center">18</div></td>
-			        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center">范冰冰</div></td>
-			        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center">3</div></td>
-			        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center">病假</div></td>
-			        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center">发烧</div></td>
-			        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center">2014-01-05 16:26:13</div></td>
-			        <td height="20" bgcolor="#FFFFFF" class="STYLE19">
-			        	<div align="center">
-			 					初始录入
-		            	</div>
-		            </td>
-			        <td height="20" bgcolor="#FFFFFF"><div align="center" class="STYLE21">
-			        	<a href="${pageContext.request.contextPath }/leaveBillAction_input.action?id=1" >修改</a>
-						<a href="leaveBillAction_delete.action?id=1" >删除</a>
-						<a href="${pageContext.request.contextPath }/workflowAction_startProcess.action?id=1" >申请请假</a>
-					</div></td>
-			    </tr> 
-			     <tr>
-			        <td height="20" bgcolor="#FFFFFF" class="STYLE6"><div align="center">19</div></td>
-			        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center">范冰冰</div></td>
-			        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center">4</div></td>
-			        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center">事假</div></td>
-			        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center">旅游</div></td>
-			        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center">2014-01-08 10:11:11</div></td>
-			        <td height="20" bgcolor="#FFFFFF" class="STYLE19">
-			        	<div align="center">
-			 					审批中
-		            	</div>
-		            </td>
-			        <td height="20" bgcolor="#FFFFFF"><div align="center" class="STYLE21">
-			        	
-			        </div></td>
-			    </tr> 
-			    <tr>
-			        <td height="20" bgcolor="#FFFFFF" class="STYLE6"><div align="center">20</div></td>
-			        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center">范冰冰</div></td>
-			        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center">5</div></td>
-			        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center">事假</div></td>
-			        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center">拍戏</div></td>
-			        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center">2014-01-12 13:22:11</div></td>
-			        <td height="20" bgcolor="#FFFFFF" class="STYLE19">
-			        	<div align="center">
-			 					审核通过
-		            	</div>
-		            </td>
-			        <td height="20" bgcolor="#FFFFFF"><div align="center" class="STYLE21">
-			        	<a href="${pageContext.request.contextPath }/leaveBillAction_input.action?id=1" >修改</a>
-						<a href="leaveBillAction_delete.action?id=1" >删除</a>
-						<a href="${pageContext.request.contextPath }/workflowAction_viewHisComment.action?id=1" >查看审核记录</a>
-			        </div></td>
-			    </tr> 
+		       
 			    
 			    <s:iterator value="leaveBillList">
 			    	<tr>
@@ -105,6 +54,11 @@
 			        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center">${remark}</div></td>
 			        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center"><s:date name="leaveDate" format="yyyy-MM-dd HH:mm:ss"/> </div></td>
 			        <td height="20" bgcolor="#FFFFFF" class="STYLE19">
+			        	<s:if test="state==0">
+		            		<div align="center">
+			 					异常
+		            		</div>
+		            	</s:if>
 			        	
 		            	<s:if test="state==1">
 		            		<div align="center">
@@ -123,9 +77,21 @@
 		            	</s:if>
 		            </td>
 			        <td height="20" bgcolor="#FFFFFF"><div align="center" class="STYLE21">
-			        	<a href="${pageContext.request.contextPath }/leaveBillAction_input.action?id=1" >修改</a>
-						<a href="leaveBillAction_delete.action?id=1" >删除</a>
-						<a href="${pageContext.request.contextPath }/workflowAction_viewHisComment.action?id=1" >查看审核记录</a>
+			        	
+			        	<s:a action="leaveBillAction_input.action">
+			        		修改
+			        		<s:param name="id" value="id"/>
+			        	</s:a>
+						
+						<s:a action="leaveBillAction_delete.action">
+			        		删除
+			        		<s:param name="id" value="id"/>
+			        	</s:a>
+						
+						<s:a action="workflowAction_viewHisComment.action">
+			        		查看审核记录
+			        		<s:param name="id" value="id"/>
+			        	</s:a>
 			        </div></td>
 			    </tr> 
 			    

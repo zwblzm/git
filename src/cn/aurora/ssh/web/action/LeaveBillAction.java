@@ -69,6 +69,13 @@ public class LeaveBillAction extends ActionSupport implements ModelDriven<LeaveB
 	 * 
 	 * */
 	public String delete(){
+		Long id = leaveBill.getId();
+		if(id!=null){
+			
+			LeaveBill leaveBill = leaveBillService.findLeaveBillById(id);
+			leaveBillService.deleteLeaveBillByEntity(leaveBill);
+		}
+		
 		return "save";
 	}
 	

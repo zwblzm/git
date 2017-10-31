@@ -41,4 +41,17 @@ public class LeaveBillServiceImpl implements ILeaveBillService {
 		return leaveBillList;
 	}
 
+	@Override
+	public LeaveBill findLeaveBillById(Long id) {
+		LeaveBill leaveBill = leaveBillDao.findLeaveBillById(id);
+		return null;
+	}
+
+	@Override
+	public void deleteLeaveBillByEntity(LeaveBill leaveBill) {
+		leaveBillDao.deleteLeaveBillByEntity(leaveBill);
+		
+	}
+
+	
 }

@@ -12,4 +12,9 @@ public interface ILeaveBillService {
 
 	List<LeaveBill> findLeaveBillListByEmployee(Long id);
 
+	LeaveBill findLeaveBillById(Long id);
+
+	void deleteLeaveBillByEntity(LeaveBill leaveBill);
+
+	
 }

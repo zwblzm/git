@@ -6,7 +6,7 @@
 <title>请假管理</title>
 </head>
 <body>
- 	<form action="leaveBillAction_save.action">
+ 	<form action="leaveBillAction_save.action" method="POST">
  		<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
 		  <tr>
 		    <td height="30"><table width="100%" border="0" cellspacing="0" cellpadding="0">

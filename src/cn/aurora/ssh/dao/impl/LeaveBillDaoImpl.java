@@ -21,5 +21,18 @@ public class LeaveBillDaoImpl extends HibernateDaoSupport implements ILeaveBillD
 		return leaveBillList;
 	}
 
+	@Override
+	public LeaveBill findLeaveBillById(Long id) {
+		List<LeaveBill> leaveBills = this.getHibernateTemplate().findByNamedQuery("getLeaveBillById", id);
+		return leaveBills.get(0);
+	}
+
+	@Override
+	public void deleteLeaveBillByEntity(LeaveBill leaveBill) {
+		this.getHibernateTemplate().delete(leaveBill);
+		
+	}
+
+	
 	
 }
